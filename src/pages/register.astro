@@ -1,0 +1,43 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/common/Header.astro';
+import Footer from '@/components/common/Footer.astro';
+import { Button } from '@/components/ui/button';
+import { Clock } from 'lucide-react';
+---
+
+<Layout title="Registro | Ethereum Bolivia">
+	<div class="relative flex min-h-screen w-full flex-col">
+		<div class="layout-container flex h-full grow flex-col">
+			<Header />
+			<main class="flex flex-col flex-1">
+				<section class="w-full py-24 px-4 bg-background">
+					<div class="max-w-xl mx-auto text-center flex flex-col items-center">
+						<div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-muted border border-border mb-6">
+							<Clock className="size-7 text-muted-foreground" />
+						</div>
+						<h1 class="text-3xl font-bold text-foreground tracking-tight mb-4">
+							Las inscripciones aún no están abiertas
+						</h1>
+						<p class="text-muted-foreground text-base font-light mb-8 max-w-md">
+							Te avisaremos cuando puedas inscribirte al Buildathon y a los talleres de Road to Buildathon. Mantente atento a nuestras redes.
+						</p>
+						<div class="flex flex-col sm:flex-row gap-4 justify-center">
+							<a href="/">
+								<Button size="lg" variant="secondary" className="rounded-full">
+									Volver al inicio
+								</Button>
+							</a>
+							<a href="/road-to-buildathon/">
+								<Button size="lg" variant="outline" className="rounded-full">
+									Road to Buildathon
+								</Button>
+							</a>
+						</div>
+					</div>
+				</section>
+			</main>
+			<Footer />
+		</div>
+	</div>
+</Layout>

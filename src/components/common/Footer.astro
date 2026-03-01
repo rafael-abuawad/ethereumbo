@@ -1,0 +1,30 @@
+---
+import { Gem, Send, Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
+
+const socialLinks = [
+	{ href: '#', icon: Send, label: 'Telegram' },
+	{ href: '#', icon: Instagram, label: 'Instagram' },
+	{ href: '#', icon: Facebook, label: 'Facebook' },
+	{ href: '#', icon: Linkedin, label: 'LinkedIn' },
+	{ href: '#', icon: Twitter, label: 'X' },
+];
+---
+
+<footer class="bg-background border-t border-border">
+	<div class="max-w-[1280px] mx-auto flex flex-col gap-8 px-6 lg:px-12 py-12 items-center">
+		<a href="/" class="flex items-center gap-3">
+			<div class="size-6 flex items-center justify-center text-muted-foreground">
+				<Gem className="size-5" />
+			</div>
+			<span class="text-lg font-semibold text-foreground tracking-tight">Ethereum Bolivia</span>
+		</a>
+		<div class="flex flex-wrap justify-center gap-8">
+			{socialLinks.map(({ href, icon: Icon, label }) => (
+				<a href={href} class="text-muted-foreground hover:text-primary transition-colors text-sm" aria-label={label}>
+					<Icon className="size-6" />
+				</a>
+			))}
+		</div>
+		<p class="text-muted-foreground text-xs mt-4">© 2026 Ethereum Bolivia. Todos los derechos reservados.</p>
+	</div>
+</footer>

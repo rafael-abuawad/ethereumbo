@@ -1,0 +1,50 @@
+---
+import { Button } from "@/components/ui/button";
+import { WavyBackground } from "@/components/ui/wavy-background";
+---
+
+<WavyBackground className="h-full w-full" client:idle>
+	<div class="flex flex-col items-center justify-center h-full">
+		<div
+			class="relative z-10 w-full max-w-[1280px] mx-auto px-6 lg:px-12 flex flex-col gap-8 text-center items-center"
+		>
+			<div
+				class="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-muted border border-border backdrop-blur-sm"
+			>
+				<span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"
+				></span>
+				<span
+					class="text-xs font-medium text--foreground uppercase tracking-widest"
+					>Septiembre • Cochabamba</span
+				>
+			</div>
+			<h1
+				class="text-white text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight max-w-5xl"
+			>
+				<span>Buildathon</span>
+				<br />
+				<span>Cochabamba</span>
+				<br />
+				<span>2026</span>
+			</h1>
+			<p
+				class="text-white text-lg md:text-xl font-light leading-relaxed max-w-xl mx-auto"
+			>
+				El hackathon de blockchain más importante del corazón de
+				Bolivia. Construyendo el futuro de la web descentralizada en un
+				entorno minimalista.
+			</p>
+			<div class="flex flex-col sm:flex-row gap-4 justify-center">
+				<a href="/register">
+					<Button
+						size="lg"
+						variant="secondary"
+						className="rounded-full"
+					>
+						Regístrate ahora
+					</Button>
+				</a>
+			</div>
+		</div>
+	</div>
+</WavyBackground>

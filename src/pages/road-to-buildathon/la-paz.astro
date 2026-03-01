@@ -1,0 +1,23 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/common/Header.astro';
+import RoadToBuildathonHero from '@/components/road-to-buildathon/Hero.astro';
+import RoadToBuildathonTimeline from '@/components/road-to-buildathon/Timeline.astro';
+import Footer from '@/components/common/Footer.astro';
+import RoadToBuildathonRegister from '@/components/road-to-buildathon/Register.astro';
+import { eventsByCity } from '@/lib/road-to-buildathon/events';
+---
+
+<Layout title="Road to Buildathon - La Paz | Ethereum Bolivia">
+	<div class="relative flex min-h-screen w-full flex-col">
+		<div class="layout-container flex h-full grow flex-col">
+			<Header />
+			<main class="flex flex-col flex-1">
+				<RoadToBuildathonHero activeCity="la-paz" />
+				<RoadToBuildathonTimeline events={eventsByCity['la-paz']} cityName="La Paz" />
+				<RoadToBuildathonRegister />
+			</main>
+			<Footer />
+		</div>
+	</div>
+</Layout>
