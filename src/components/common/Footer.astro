@@ -1,34 +1,88 @@
 ---
-import { Send, Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
+import { Send, Instagram, Facebook, Linkedin, Twitter } from "lucide-react";
+import { ModeToggle } from "./ModeToggle";
+import { Button } from "../ui/button";
 
 const socialLinks = [
-	{ href: '#', icon: Send, label: 'Telegram' },
-	{ href: '#', icon: Instagram, label: 'Instagram' },
-	{ href: '#', icon: Facebook, label: 'Facebook' },
-	{ href: '#', icon: Linkedin, label: 'LinkedIn' },
-	{ href: '#', icon: Twitter, label: 'X' },
+	{ href: "https://t.me/EthereumBo", icon: Send, label: "Telegram" },
+	{
+		href: "https://www.instagram.com/ethereumbo/",
+		icon: Instagram,
+		label: "Instagram",
+	},
+	{
+		href: "https://www.facebook.com/EthereumBo",
+		icon: Facebook,
+		label: "Facebook",
+	},
+	{
+		href: "https://www.linkedin.com/company/ethereumbo/",
+		icon: Linkedin,
+		label: "LinkedIn",
+	},
+	{ href: "https://x.com/EthereumBo", icon: Twitter, label: "X" },
 ];
 ---
 
 <footer class="bg-background border-t border-border">
-	<div class="max-w-[1280px] mx-auto flex flex-col gap-8 px-6 lg:px-12 py-12 items-center">
+	<div
+		class="max-w-[1280px] mx-auto flex flex-col gap-8 px-6 lg:px-12 py-12 items-center"
+	>
 		<a href="/" class="flex items-center gap-2">
 			<span class="flex items-center gap-2 dark:hidden">
-				<img src="/images/15_isotipo_magenta.png" alt="" class="h-10 w-auto" />
-				<img src="/images/12_logotipo_magenta.png" alt="Ethereum Bolivia" class="h-14 w-auto" />
+				<img
+					src="/images/15_isotipo_magenta.png"
+					alt=""
+					class="h-10 w-auto"
+				/>
+				<img
+					src="/images/12_logotipo_magenta.png"
+					alt="Ethereum Bolivia"
+					class="h-14 w-auto"
+				/>
 			</span>
 			<span class="hidden dark:flex items-center gap-2">
-				<img src="/images/16_isotipo_blanco.png" alt="" class="h-10 w-auto" />
-				<img src="/images/13_logotipo_blanco.png" alt="Ethereum Bolivia" class="h-14 w-auto" />
+				<img
+					src="/images/16_isotipo_blanco.png"
+					alt=""
+					class="h-10 w-auto"
+				/>
+				<img
+					src="/images/13_logotipo_blanco.png"
+					alt="Ethereum Bolivia"
+					class="h-14 w-auto"
+				/>
 			</span>
 		</a>
 		<div class="flex flex-wrap justify-center gap-8">
-			{socialLinks.map(({ href, icon: Icon, label }) => (
-				<a href={href} class="text-muted-foreground hover:text-primary transition-colors text-sm" aria-label={label}>
-					<Icon className="size-6" />
-				</a>
-			))}
+			{
+				socialLinks.map(({ href, icon: Icon, label }) => (
+					<a href={href} target="_blank" rel="noopener noreferrer">
+						<Button
+							variant="ghost"
+							size="icon"
+							className="text-muted-foreground rounded-full"
+						>
+							<Icon className="size-6" />
+						</Button>
+					</a>
+				))
+			}
+			<ModeToggle client:load />
 		</div>
-		<p class="text-muted-foreground text-xs mt-4">© 2026 Ethereum Bolivia. Todos los derechos reservados.</p>
+		<div class="flex flex-col gap-2 mt-4 items-center">
+			<p class="text-muted-foreground text-xs">
+				© 2026 Ethereum Bolivia. Todos los derechos reservados.
+			</p>
+			<p class="text-muted-foreground text-xs">
+				Hecho por <a
+					href="https://rafael-abuawad.github.io/"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="underline hover:text-foreground transition-colors"
+					>Rafael Abuawad</a
+				>
+			</p>
+		</div>
 	</div>
 </footer>

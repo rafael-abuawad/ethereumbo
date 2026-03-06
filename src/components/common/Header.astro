@@ -1,6 +1,5 @@
 ---
 import { Button } from '@/components/ui/button';
-import { ModeToggle } from './ModeToggle';
 import { MenuIcon, XIcon } from 'lucide-react';
 ---
 
@@ -8,19 +7,16 @@ import { MenuIcon, XIcon } from 'lucide-react';
 	<div class="mx-auto max-w-[1280px] px-6 lg:px-12 py-5 flex items-center justify-between whitespace-nowrap">
 		<a href="/" class="flex items-center gap-2">
 			<span class="flex items-center gap-2 dark:hidden">
-				<img src="/images/15_isotipo_magenta.png" alt="" class="h-10 w-auto" />
-				<img src="/images/12_logotipo_magenta.png" alt="Ethereum Bolivia" class="h-14 w-auto" />
+				<img src="/images/15_isotipo_magenta.png" alt="" class="h-12 w-auto" />
+				<img src="/images/12_logotipo_magenta.png" alt="Ethereum Bolivia" class="h-16 w-auto" />
 			</span>
 			<span class="hidden dark:flex items-center gap-2">
-				<img src="/images/16_isotipo_blanco.png" alt="" class="h-10 w-auto" />
-				<img src="/images/13_logotipo_blanco.png" alt="Ethereum Bolivia" class="h-14 w-auto" />
+				<img src="/images/16_isotipo_blanco.png" alt="" class="h-12 w-auto" />
+				<img src="/images/13_logotipo_blanco.png" alt="Ethereum Bolivia" class="h-16 w-auto" />
 			</span>
 		</a>
 		<div class="hidden lg:flex flex-1 justify-end gap-10">
 			<nav class="flex items-center gap-8">
-				<div class="hidden">
-					<ModeToggle client:load />
-				</div>
 				<a href="/" class="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors">Inicio</a>
 				<a href="/road-to-buildathon/" class="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors">Road To Buildathon</a>
 			</nav>
@@ -56,9 +52,6 @@ import { MenuIcon, XIcon } from 'lucide-react';
 		<nav class="mx-auto max-w-[1280px] px-6 py-6 flex flex-col gap-4">
 			<a href="/" @click="open = false" class="text-muted-foreground hover:text-foreground text-base font-medium transition-colors py-2">Inicio</a>
 			<a href="/road-to-buildathon/" @click="open = false" class="text-muted-foreground hover:text-foreground text-base font-medium transition-colors py-2">Road To Buildathon</a>
-			<div class="flex items-center gap-3 py-2">
-				<ModeToggle client:load />
-			</div>
 			<Button size="lg" className="rounded-full w-full mt-2">
 				<a href="/register" @click="open = false">Regístrate ahora</a>
 			</Button>
