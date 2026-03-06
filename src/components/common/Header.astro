@@ -1,21 +1,26 @@
 ---
 import { Button } from '@/components/ui/button';
 import { ModeToggle } from './ModeToggle';
-
-// Inline SVG icons - no React
-const GemIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 3 8 9l4 13 4-13-2.5-6"/><path d="M17 3a2 2 0 0 1 1.6.8l3 4a2 2 0 0 1 .013 2.382l-7.99 10.986a2 2 0 0 1-3.247 0l-7.99-10.986A2 2 0 0 1 2.4 7.8l2.998-3.997A2 2 0 0 1 7 3z"/><path d="M2 9h20"/></svg>`;
-const MenuIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>`;
+import { MenuIcon, XIcon } from 'lucide-react';
 ---
 
-<header class="sticky top-0 z-50 w-full bg-background/90 backdrop-blur-sm border-b border-border">
+<header x-data="{ open: false }" class="sticky top-0 z-50 w-full bg-background/90 backdrop-blur-sm border-b border-border">
 	<div class="mx-auto max-w-[1280px] px-6 lg:px-12 py-5 flex items-center justify-between whitespace-nowrap">
-		<a href="/" class="flex items-center gap-3">
-			<div class="size-8 flex items-center justify-center text-primary [&_svg]:size-7"><span set:html={GemIcon} /></div>
-			<h2 class="text-foreground text-base font-semibold tracking-tight">Ethereum Bolivia</h2>
+		<a href="/" class="flex items-center gap-2">
+			<span class="flex items-center gap-2 dark:hidden">
+				<img src="/images/15_isotipo_magenta.png" alt="" class="h-10 w-auto" />
+				<img src="/images/12_logotipo_magenta.png" alt="Ethereum Bolivia" class="h-14 w-auto" />
+			</span>
+			<span class="hidden dark:flex items-center gap-2">
+				<img src="/images/16_isotipo_blanco.png" alt="" class="h-10 w-auto" />
+				<img src="/images/13_logotipo_blanco.png" alt="Ethereum Bolivia" class="h-14 w-auto" />
+			</span>
 		</a>
 		<div class="hidden lg:flex flex-1 justify-end gap-10">
 			<nav class="flex items-center gap-8">
-				<ModeToggle client:load />
+				<div class="hidden">
+					<ModeToggle client:load />
+				</div>
 				<a href="/" class="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors">Inicio</a>
 				<a href="/road-to-buildathon/" class="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors">Road To Buildathon</a>
 			</nav>
@@ -23,6 +28,40 @@ const MenuIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 				<a href="/register">Regístrate ahora</a>
 			</Button>
 		</div>
-		<button type="button" class="lg:hidden p-2 text-foreground hover:bg-muted rounded-md transition-colors [&_svg]:size-6" aria-label="Open menu"><span set:html={MenuIcon} /></button>
+		<button
+			@click="open = !open"
+			:aria-expanded="open"
+			type="button"
+			class="lg:hidden p-2 text-foreground hover:bg-muted rounded-md transition-colors [&_svg]:size-6"
+			aria-label="Toggle menu"
+		>
+			<span x-show="!open"><MenuIcon /></span>
+			<span x-show="open" x-cloak><XIcon /></span>
+		</button>
+	</div>
+
+	<div
+		x-show="open"
+		x-transition:enter="transition ease-out duration-200"
+		x-transition:enter-start="opacity-0 -translate-y-2"
+		x-transition:enter-end="opacity-100 translate-y-0"
+		x-transition:leave="transition ease-in duration-150"
+		x-transition:leave-start="opacity-100 translate-y-0"
+		x-transition:leave-end="opacity-0 -translate-y-2"
+		x-effect="document.body.classList.toggle('overflow-hidden', open)"
+		@click.outside="open = false"
+		x-cloak
+		class="lg:hidden border-t border-border bg-background/95 backdrop-blur-sm"
+	>
+		<nav class="mx-auto max-w-[1280px] px-6 py-6 flex flex-col gap-4">
+			<a href="/" @click="open = false" class="text-muted-foreground hover:text-foreground text-base font-medium transition-colors py-2">Inicio</a>
+			<a href="/road-to-buildathon/" @click="open = false" class="text-muted-foreground hover:text-foreground text-base font-medium transition-colors py-2">Road To Buildathon</a>
+			<div class="flex items-center gap-3 py-2">
+				<ModeToggle client:load />
+			</div>
+			<Button size="lg" className="rounded-full w-full mt-2">
+				<a href="/register" @click="open = false">Regístrate ahora</a>
+			</Button>
+		</nav>
 	</div>
 </header>

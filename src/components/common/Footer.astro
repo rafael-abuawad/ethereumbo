@@ -1,5 +1,5 @@
 ---
-import { Gem, Send, Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
+import { Send, Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
 
 const socialLinks = [
 	{ href: '#', icon: Send, label: 'Telegram' },
@@ -12,11 +12,15 @@ const socialLinks = [
 
 <footer class="bg-background border-t border-border">
 	<div class="max-w-[1280px] mx-auto flex flex-col gap-8 px-6 lg:px-12 py-12 items-center">
-		<a href="/" class="flex items-center gap-3">
-			<div class="size-6 flex items-center justify-center text-muted-foreground">
-				<Gem className="size-5" />
-			</div>
-			<span class="text-lg font-semibold text-foreground tracking-tight">Ethereum Bolivia</span>
+		<a href="/" class="flex items-center gap-2">
+			<span class="flex items-center gap-2 dark:hidden">
+				<img src="/images/15_isotipo_magenta.png" alt="" class="h-10 w-auto" />
+				<img src="/images/12_logotipo_magenta.png" alt="Ethereum Bolivia" class="h-14 w-auto" />
+			</span>
+			<span class="hidden dark:flex items-center gap-2">
+				<img src="/images/16_isotipo_blanco.png" alt="" class="h-10 w-auto" />
+				<img src="/images/13_logotipo_blanco.png" alt="Ethereum Bolivia" class="h-14 w-auto" />
+			</span>
 		</a>
 		<div class="flex flex-wrap justify-center gap-8">
 			{socialLinks.map(({ href, icon: Icon, label }) => (
