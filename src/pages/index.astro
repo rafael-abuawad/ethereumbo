@@ -1,26 +1,28 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import Header from '@/components/common/Header.astro';
-import Hero from '@/components/landing/Hero.astro';
-import AboutCochabamba from '@/components/landing/AboutCochabamba.astro';
-import StatsStrip from '@/components/landing/StatsStrip.astro';
-import InscripcionesSection from '@/components/landing/InscripcionesSection.astro';
-import BuildathonVideoSection from '@/components/landing/BuildathonVideoSection.astro';
-import Footer from '@/components/common/Footer.astro';
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/common/Header.astro";
+import Hero from "@/components/landing/Hero.astro";
+import { HackathonCountdown } from "@/components/landing/HackathonCountdown";
+import AboutCochabamba from "@/components/landing/AboutCochabamba.astro";
+import StatsStrip from "@/components/landing/StatsStrip.astro";
+import InscripcionesSection from "@/components/landing/InscripcionesSection.astro";
+import BuildathonVideoSection from "@/components/landing/BuildathonVideoSection.astro";
+import Footer from "@/components/common/Footer.astro";
 ---
 
 <Layout>
-	<div class="relative flex min-h-screen w-full flex-col">
-		<div class="layout-container flex h-full grow flex-col">
-			<Header />
-			<main class="flex flex-col flex-1">
-				<Hero client:load />
-				<AboutCochabamba />
-				<StatsStrip />
-				<InscripcionesSection />
-				<BuildathonVideoSection />
-			</main>
-			<Footer />
-		</div>
-	</div>
+  <div class="landing-shell relative flex min-h-screen w-full flex-col">
+    <div class="layout-container flex h-full grow flex-col">
+      <Header />
+      <main class="flex flex-col flex-1">
+        <Hero />
+        <HackathonCountdown client:load />
+        <AboutCochabamba />
+        <StatsStrip />
+        <InscripcionesSection />
+        <BuildathonVideoSection />
+      </main>
+      <Footer />
+    </div>
+  </div>
 </Layout>

@@ -1,139 +1,144 @@
 ---
-import { Badge } from '@/components/ui/badge';
-import { Star, CalendarX2, MapPin } from 'lucide-react';
-import type { TimelineEvent } from '@/lib/road-to-buildathon/events';
+import { Badge } from "@/components/ui/badge";
+import { Star, CalendarX2, MapPin } from "lucide-react";
+import type { TimelineEvent } from "@/lib/road-to-buildathon/events";
 
 interface Props {
-	events: TimelineEvent[];
-	/** City name for empty state message */
-	cityName: string;
+  events: TimelineEvent[];
+  /** City name for empty state message */
+  cityName: string;
 }
 
 const { events, cityName } = Astro.props;
 ---
 
 <section class="w-full max-w-3xl mx-auto px-6 pb-24">
-	{events.length === 0 ? (
-		<div class="flex flex-col items-center justify-center py-16 md:py-24 text-center">
-			<div class="flex h-16 w-16 items-center justify-center rounded-full bg-muted text-muted-foreground mb-6">
-				<CalendarX2 className="size-8" />
-			</div>
-			<h3 class="text-xl font-semibold text-foreground mb-2">Próximamente</h3>
-			<p class="text-muted-foreground text-sm max-w-md font-light leading-relaxed">
-				Aún no hay eventos programados para {cityName}. Mantente atento a nuestras redes para conocer las próximas fechas de talleres y meetups.
-			</p>
-		</div>
-	) : (
-	<div class="relative">
-		<div
-			class="absolute left-[7px] md:left-[107px] top-2 bottom-0 w-px bg-border"
-			aria-hidden="true"
-		/>
-		<div class="space-y-0">
-			{events.map((event) => {
-				const isMain = event.type === 'main';
-				return (
-					<div
-						class="relative grid grid-cols-[20px_1fr] md:grid-cols-[120px_1fr] gap-x-8 md:gap-x-12 mb-12 last:mb-0"
-					>
-						<div class="relative flex md:flex-row flex-col items-start md:items-center md:justify-end">
-							<span
-								class:list={[
-									'hidden md:block text-sm font-mono text-right pr-6 pt-0.5',
-									isMain ? 'text-primary font-bold' : 'text-muted-foreground',
-								]}
-							>
-								{event.date}
-							</span>
-						</div>
-						<div class="flex flex-col pt-0.5">
-							<span class="md:hidden text-xs font-mono text-muted-foreground mb-1">
-								{event.dateShort} · {event.time}
-							</span>
-							<h4
-								class:list={[
-									'text-xl font-semibold mb-2',
-									isMain ? 'text-primary' : 'text-foreground',
-								]}
-							>
-								{event.title}
-							</h4>
-							<p
-								class:list={[
-									'text-sm font-light leading-relaxed max-w-lg mb-3',
-									isMain ? 'text-foreground/80' : 'text-muted-foreground',
-								]}
-							>
-								{event.description}
-							</p>
-							<div
-								class:list={[
-									'flex flex-wrap items-center gap-3 text-xs font-mono',
-									isMain ? 'text-primary font-medium' : 'text-muted-foreground',
-								]}
-							>
-								{event.type === 'main' ? (
-									<Badge
-										variant="outline"
-										className="border-primary/20 bg-primary/5 text-primary gap-1.5"
-									>
-										<Star className="size-3.5" />
-										Evento principal
-									</Badge>
-								) : (
-									<Badge variant="outline" className="gap-1.5">
-										<span
-											class:list={[
-												'w-1 h-1 rounded-full shrink-0',
-												event.type === 'online' && 'bg-blue-500',
-												event.type === 'stream' && 'bg-purple-500',
-												event.type === 'in-person' && 'bg-emerald-500',
-											]}
-										/>
-										{event.type === 'online' && 'En línea'}
-										{event.type === 'stream' && 'Stream'}
-										{event.type === 'in-person' && 'Presencial'}
-									</Badge>
-								)}
-								{event.lumaUrl ? (
-									<a
-										href={event.lumaUrl}
-										target="_blank"
-										rel="noopener noreferrer"
-										class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full border border-border shrink-0"
-										style="background-color: #f8f8f8"
-										aria-label="Registrarse en Luma"
-									>
-										<img
-											src="/images/luma.png"
-											alt=""
-											class="size-4 object-contain"
-											width="16"
-											height="16"
-										/>
-										<span class="font-mono text-black">Luma</span>
-									</a>
-								) : null}
-								{event.mapsUrl ? (
-									<Badge variant="outline">
-										<a
-											href={event.mapsUrl}
-											target="_blank"
-											rel="noopener noreferrer"
-											class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full border border-border shrink-0"
-											aria-label="Ver ubicación en Google Maps"
-										>
-											<MapPin className="size-2.5" />
-											Ubicación
-										</a>
-									</Badge>
-								) : null}
-							</div>
-						</div>
-					</div>
-				);
-			})}
-		</div>
-	</div>
-	)}
+  {
+    events.length === 0 ? (
+      <div class="flex flex-col items-center justify-center py-16 md:py-24 text-center">
+        <div class="flex h-16 w-16 items-center justify-center rounded-full bg-muted text-muted-foreground mb-6">
+          <CalendarX2 className="size-8" />
+        </div>
+        <h3 class="text-xl font-semibold text-foreground mb-2">Próximamente</h3>
+        <p class="text-muted-foreground text-sm max-w-md font-light leading-relaxed">
+          Aún no hay eventos programados para {cityName}. Mantente atento a
+          nuestras redes para conocer las próximas fechas de talleres y meetups.
+        </p>
+      </div>
+    ) : (
+      <div class="relative">
+        <div
+          class="absolute left-[7px] md:left-[107px] top-2 bottom-0 w-px bg-border"
+          aria-hidden="true"
+        />
+        <div class="space-y-0">
+          {events.map((event) => {
+            const isMain = event.type === "main";
+            return (
+              <div class="relative grid grid-cols-[20px_1fr] md:grid-cols-[120px_1fr] gap-x-8 md:gap-x-12 mb-12 last:mb-0">
+                <div class="relative flex md:flex-row flex-col items-start md:items-center md:justify-end">
+                  <span
+                    class:list={[
+                      "hidden md:block text-sm font-mono text-right pr-6 pt-0.5",
+                      isMain
+                        ? "text-primary font-bold"
+                        : "text-muted-foreground",
+                    ]}
+                  >
+                    {event.date}
+                  </span>
+                </div>
+                <div class="flex flex-col pt-0.5">
+                  <span class="md:hidden text-xs font-mono text-muted-foreground mb-1">
+                    {event.dateShort} · {event.time}
+                  </span>
+                  <h4
+                    class:list={[
+                      "text-xl font-semibold mb-2",
+                      isMain ? "text-primary" : "text-foreground",
+                    ]}
+                  >
+                    {event.title}
+                  </h4>
+                  <p
+                    class:list={[
+                      "text-sm font-light leading-relaxed max-w-lg mb-3",
+                      isMain ? "text-foreground/80" : "text-muted-foreground",
+                    ]}
+                  >
+                    {event.description}
+                  </p>
+                  <div
+                    class:list={[
+                      "flex flex-wrap items-center gap-3 text-xs font-mono",
+                      isMain
+                        ? "text-primary font-medium"
+                        : "text-muted-foreground",
+                    ]}
+                  >
+                    {event.type === "main" ? (
+                      <Badge
+                        variant="outline"
+                        className="border-primary/20 bg-primary/5 text-primary gap-1.5"
+                      >
+                        <Star className="size-3.5" />
+                        Evento principal
+                      </Badge>
+                    ) : (
+                      <Badge variant="outline" className="gap-1.5">
+                        <span
+                          class:list={[
+                            "w-1 h-1 rounded-full shrink-0",
+                            event.type === "online" && "bg-blue-500",
+                            event.type === "stream" && "bg-purple-500",
+                            event.type === "in-person" && "bg-emerald-500",
+                          ]}
+                        />
+                        {event.type === "online" && "En línea"}
+                        {event.type === "stream" && "Stream"}
+                        {event.type === "in-person" && "Presencial"}
+                      </Badge>
+                    )}
+                    {event.lumaUrl ? (
+                      <a
+                        href={event.lumaUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full border border-border shrink-0"
+                        style="background-color: #f8f8f8"
+                        aria-label="Registrarse en Luma"
+                      >
+                        <img
+                          src="/images/luma.png"
+                          alt=""
+                          class="size-4 object-contain"
+                          width="16"
+                          height="16"
+                        />
+                        <span class="font-mono text-black">Luma</span>
+                      </a>
+                    ) : null}
+                    {event.mapsUrl ? (
+                      <Badge variant="outline">
+                        <a
+                          href={event.mapsUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="inline-flex items-center gap-0.5 rounded-full shrink-0"
+                          aria-label="Ver ubicación en Google Maps"
+                        >
+                          <MapPin className="size-2.5" />
+                          Ubicación
+                        </a>
+                      </Badge>
+                    ) : null}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    )
+  }
 </section>

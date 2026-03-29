@@ -1,0 +1,2 @@
+# Oxfmt does not yet support full .astro formatting (see https://oxc.rs/compatibility)
+**/*.astro

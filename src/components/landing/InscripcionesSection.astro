@@ -4,101 +4,104 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 const inscripciones = [
-	{
-		id: "hackers",
-		icon: Monitor,
-		iconClass:
-			"bg-sky-500/20 text-sky-400 dark:bg-sky-500/20 dark:text-sky-400",
-		title: "Convocatoria para Hackers",
-		status: "Cupos Llenos. Más de 200 hackers!",
-		image: "/images/inscripciones/hackers.jpg",
-		imageAlt: "Hackers trabajando en el Buildathon",
-		href: "#",
-	},
-	{
-		id: "conferencias",
-		icon: Star,
-		iconClass:
-			"bg-violet-500/20 text-violet-400 dark:bg-violet-500/20 dark:text-violet-400",
-		title: "Registro SOLO para conferencias",
-		status: "Disponible hasta agota stock.",
-		image: "/images/inscripciones/conferencias.jpg",
-		imageAlt: "Auditorio durante las conferencias",
-		href: "#",
-	},
-	{
-		id: "merch",
-		icon: Zap,
-		iconClass:
-			"bg-emerald-500/20 text-emerald-400 dark:bg-emerald-500/20 dark:text-emerald-400",
-		title: "Compra Merch exclusiva del evento",
-		status: "Visita nuestra tienda de Merch.",
-		image: "/images/inscripciones/merch.jpg",
-		imageAlt: "Merchandise exclusiva del evento",
-		href: "#",
-	},
+  {
+    id: "hackers",
+    icon: Monitor,
+    title: "Convocatoria para Hackers",
+    status: "Cupos Llenos. Más de 200 hackers!",
+    image: "/images/inscripciones/hackers.jpg",
+    imageAlt: "Hackers trabajando en el Buildathon",
+    href: "#",
+  },
+  {
+    id: "conferencias",
+    icon: Star,
+    title: "Registro SOLO para conferencias",
+    status: "Disponible hasta agota stock.",
+    image: "/images/inscripciones/conferencias.jpg",
+    imageAlt: "Auditorio durante las conferencias",
+    href: "#",
+  },
+  {
+    id: "merch",
+    icon: Zap,
+    title: "Compra Merch exclusiva del evento",
+    status: "Visita nuestra tienda de Merch.",
+    image: "/images/inscripciones/merch.jpg",
+    imageAlt: "Merchandise exclusiva del evento",
+    href: "#",
+  },
 ];
 
-// Placeholder images for development (replace with actual paths when assets are available)
 const placeholderImages: Record<string, string> = {
-	hackers:
-		"https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=450&fit=crop",
-	conferencias:
-		"https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&h=450&fit=crop",
-	merch: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&h=450&fit=crop",
+  hackers:
+    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=450&fit=crop",
+  conferencias:
+    "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&h=450&fit=crop",
+  merch:
+    "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&h=450&fit=crop",
 };
 ---
 
-<section class="w-full bg-background py-24" id="inscripciones">
-	<div class="max-w-[1280px] mx-auto px-6 lg:px-12 w-full">
-		<h2
-			class="text-foreground text-4xl md:text-5xl font-bold leading-tight tracking-tight text-left mb-16"
-		>
-			Inscripciones
-		</h2>
-		<div class="grid md:grid-cols-3 gap-6 lg:gap-8">
-			{
-				inscripciones.map((item) => {
-					const Icon = item.icon;
-					const imageSrc = placeholderImages[item.id] ?? item.image;
-					return (
-						<Card className="flex flex-col gap-0 p-0 rounded-2xl bg-muted border border-border overflow-hidden transition-colors shadow-none hover:border-border/80">
-							<div class="p-6 pb-4 flex flex-col gap-4">
-								<div
-									class={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${item.iconClass}`}
-								>
-									<Icon className="size-5" />
-								</div>
-								<div class="flex flex-col gap-1 sm:min-h-24 xl:min-h-fit">
-									<h3 class="text-foreground font-bold text-lg">
-										{item.title}
-									</h3>
-									<p class="text-muted-foreground text-sm">
-										{item.status}
-									</p>
-								</div>
-							</div>
-							<div class="aspect-4/3 w-full overflow-hidden bg-muted">
-								<img
-									src={imageSrc}
-									alt={item.imageAlt}
-									class="w-full h-full object-cover"
-								/>
-							</div>
-							<div class="p-6 pt-4">
-								<Button
-									variant="outline"
-									className="rounded-full"
-									disabled
-								>
-									Proximamente
-									<ArrowRight className="size-4" />
-								</Button>
-							</div>
-						</Card>
-					);
-				})
-			}
-		</div>
-	</div>
+<section
+  class="relative w-full bg-background py-24 md:py-28"
+  id="inscripciones"
+>
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-12 w-full relative">
+    <div class="flex flex-col gap-4 mb-14 max-w-3xl">
+      <h2
+        class="font-display text-foreground text-4xl md:text-5xl lg:text-[3.25rem] font-semibold leading-tight tracking-tight text-left"
+      >
+        Inscripciones
+      </h2>
+      <p
+        class="text-muted-foreground text-base md:text-lg leading-relaxed max-w-2xl"
+      >
+        Elegí tu experiencia: competir, aprender en conferencias o llevarte
+        merch oficial. Pronto habilitamos los enlaces.
+      </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+      {
+        inscripciones.map((item) => {
+          const Icon = item.icon;
+          const imageSrc = placeholderImages[item.id] ?? item.image;
+          return (
+            <Card className="group flex flex-col gap-0 p-0 rounded-2xl bg-card/90 border border-border/80 border-t-2 border-t-primary overflow-hidden transition-all duration-300 shadow-none hover:-translate-y-1 hover:border-primary/25 hover:shadow-md">
+              <div class="p-6 pb-4 flex flex-col gap-4">
+                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground ring-1 ring-border transition-transform duration-300 group-hover:scale-105">
+                  <Icon className="size-5" />
+                </div>
+                <div class="flex flex-col gap-1 sm:min-h-24 xl:min-h-fit">
+                  <h3 class="text-foreground font-bold text-lg leading-snug">
+                    {item.title}
+                  </h3>
+                  <p class="text-muted-foreground text-sm leading-relaxed">
+                    {item.status}
+                  </p>
+                </div>
+              </div>
+              <div class="aspect-4/3 w-full overflow-hidden bg-muted">
+                <img
+                  src={imageSrc}
+                  alt={item.imageAlt}
+                  class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </div>
+              <div class="p-6 pt-4">
+                <Button
+                  variant="outline"
+                  className="rounded-full border-primary/20 hover:border-primary/40 hover:bg-primary/5"
+                  disabled
+                >
+                  Proximamente
+                  <ArrowRight className="size-4" />
+                </Button>
+              </div>
+            </Card>
+          );
+        })
+      }
+    </div>
+  </div>
 </section>
