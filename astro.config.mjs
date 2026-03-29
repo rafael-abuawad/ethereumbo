@@ -9,6 +9,8 @@ import alpinejs from "@astrojs/alpinejs";
 
 // https://astro.build/config
 export default defineConfig({
+  site: process.env.PUBLIC_SITE_URL ?? "http://localhost:4321",
+
   integrations: [react(), alpinejs()],
 
   vite: {

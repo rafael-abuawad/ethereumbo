@@ -1,11 +1,29 @@
 ---
 import "@/styles/global.css";
 
+const DEFAULT_TITLE = "Ethereum Bolivia - Buildathon Cochabamba 2026";
+const DEFAULT_DESCRIPTION =
+  "El hackathon de blockchain más importante del corazón de Bolivia. Construyendo el futuro de la web descentralizada con energía solarpunk en los Andes.";
+const DEFAULT_IMAGE = "/images/og.png";
+const DEFAULT_IMAGE_ALT = "Buildathon Cochabamba 2026 — Ethereum Bolivia";
+
 interface Props {
   title?: string;
+  description?: string;
+  image?: string;
+  imageAlt?: string;
 }
 
-const { title = "Ethereum Bolivia - Buildathon Cochabamba 2026" } = Astro.props;
+const {
+  title = DEFAULT_TITLE,
+  description = DEFAULT_DESCRIPTION,
+  image = DEFAULT_IMAGE,
+  imageAlt = DEFAULT_IMAGE_ALT,
+} = Astro.props;
+
+const site = Astro.site;
+const canonicalURL = new URL(Astro.url.pathname, site);
+const ogImageURL = new URL(image, site).href;
 ---
 
 <script is:inline>
@@ -45,6 +63,23 @@ const { title = "Ethereum Bolivia - Buildathon Cochabamba 2026" } = Astro.props;
       rel="stylesheet"
     />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL.href} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta property="og:locale" content="es_BO" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+
     <title>{title}</title>
   </head>
   <body
