@@ -6,12 +6,16 @@ const DEFAULT_DESCRIPTION =
   "El hackathon de blockchain más importante del corazón de Bolivia. Construyendo el futuro de la web descentralizada con energía solarpunk en los Andes.";
 const DEFAULT_IMAGE = "/images/og.png";
 const DEFAULT_IMAGE_ALT = "Buildathon Cochabamba 2026 — Ethereum Bolivia";
+const DEFAULT_IMAGE_WIDTH = 2738;
+const DEFAULT_IMAGE_HEIGHT = 1278;
 
 interface Props {
   title?: string;
   description?: string;
   image?: string;
   imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
 }
 
 const {
@@ -19,6 +23,8 @@ const {
   description = DEFAULT_DESCRIPTION,
   image = DEFAULT_IMAGE,
   imageAlt = DEFAULT_IMAGE_ALT,
+  imageWidth = DEFAULT_IMAGE_WIDTH,
+  imageHeight = DEFAULT_IMAGE_HEIGHT,
 } = Astro.props;
 
 const site = Astro.site;
@@ -71,6 +77,8 @@ const ogImageURL = new URL(image, site).href;
     <meta property="og:url" content={canonicalURL.href} />
     <meta property="og:type" content="website" />
     <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content={String(imageWidth)} />
+    <meta property="og:image:height" content={String(imageHeight)} />
     <meta property="og:image:alt" content={imageAlt} />
     <meta property="og:locale" content="es_BO" />
 
