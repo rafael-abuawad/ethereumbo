@@ -33,7 +33,7 @@ const { events, cityName } = Astro.props;
         />
         <div class="space-y-0">
           {events.map((event) => {
-            const isMain = event.type === "main";
+            const isMain = event.type.includes("main");
             return (
               <div class="relative grid grid-cols-[20px_1fr] md:grid-cols-[120px_1fr] gap-x-8 md:gap-x-12 mb-12 last:mb-0">
                 <div class="relative flex md:flex-row flex-col items-start md:items-center md:justify-end">
@@ -76,29 +76,25 @@ const { events, cityName } = Astro.props;
                         : "text-muted-foreground",
                     ]}
                   >
-                    {event.type === "main" ? (
-                      <Badge
-                        variant="outline"
-                        className="border-primary/20 bg-primary/5 text-primary gap-1.5"
-                      >
-                        <Star className="size-3.5" />
-                        Evento principal
-                      </Badge>
-                    ) : (
-                      <Badge variant="outline" className="gap-1.5">
-                        <span
-                          class:list={[
-                            "w-1 h-1 rounded-full shrink-0",
-                            event.type === "online" && "bg-blue-500",
-                            event.type === "stream" && "bg-purple-500",
-                            event.type === "in-person" && "bg-emerald-500",
-                          ]}
-                        />
-                        {event.type === "online" && "En línea"}
-                        {event.type === "stream" && "Stream"}
-                        {event.type === "in-person" && "Presencial"}
-                      </Badge>
-                    )}
+                    {event.type.map((type) => {
+                      return (
+                        <Badge variant="outline" className="gap-1.5">
+                          <span
+                            class:list={[
+                              "w-1 h-1 rounded-full shrink-0",
+                              type === "online" && "bg-blue-500",
+                              type === "stream" && "bg-purple-500",
+                              type === "in-person" && "bg-emerald-500",
+                              type === "main" && "bg-yellow-500",
+                            ]}
+                          />
+                          {type === "online" && "En línea"}
+                          {type === "stream" && "Stream"}
+                          {type === "in-person" && "Presencial"}
+                          {type === "main" && "Evento principal"}
+                        </Badge>
+                      );
+                    })}
                     {event.lumaUrl ? (
                       <a
                         href={event.lumaUrl}
