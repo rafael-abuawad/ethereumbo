@@ -12,6 +12,8 @@ const inscripciones = [
     image: "/images/inscripciones/hackers.jpg",
     imageAlt: "Hackers trabajando en el Buildathon",
     href: "#",
+    enabled: false,
+    buttonLabel: "Proximamente",
   },
   {
     id: "conferencias",
@@ -20,7 +22,9 @@ const inscripciones = [
     status: "Disponible hasta agota stock.",
     image: "/images/inscripciones/conferencias.jpg",
     imageAlt: "Auditorio durante las conferencias",
-    href: "#",
+    href: "/register",
+    enabled: true,
+    buttonLabel: "Registrarse",
   },
   {
     id: "merch",
@@ -30,6 +34,8 @@ const inscripciones = [
     image: "/images/inscripciones/merch.jpg",
     imageAlt: "Merchandise exclusiva del evento",
     href: "#",
+    enabled: false,
+    buttonLabel: "Proximamente",
   },
 ];
 
@@ -66,6 +72,17 @@ const placeholderImages: Record<string, string> = {
         inscripciones.map((item) => {
           const Icon = item.icon;
           const imageSrc = placeholderImages[item.id] ?? item.image;
+          const button = (
+            <Button
+              variant="outline"
+              className="rounded-full border-primary/20 hover:border-primary/40 hover:bg-primary/5"
+              disabled={!item.enabled}
+            >
+              {item.buttonLabel}
+              <ArrowRight className="size-4" />
+            </Button>
+          );
+
           return (
             <Card className="group flex flex-col gap-0 p-0 rounded-2xl bg-card/90 border border-border/80 border-t-2 border-t-primary overflow-hidden transition-all duration-300 shadow-none hover:-translate-y-1 hover:border-primary/25 hover:shadow-md">
               <div class="p-6 pb-4 flex flex-col gap-4">
@@ -89,14 +106,7 @@ const placeholderImages: Record<string, string> = {
                 />
               </div>
               <div class="p-6 pt-4">
-                <Button
-                  variant="outline"
-                  className="rounded-full border-primary/20 hover:border-primary/40 hover:bg-primary/5"
-                  disabled
-                >
-                  Proximamente
-                  <ArrowRight className="size-4" />
-                </Button>
+                {item.enabled ? <a href={item.href}>{button}</a> : button}
               </div>
             </Card>
           );

@@ -2,13 +2,24 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/common/Header.astro";
 import Footer from "@/components/common/Footer.astro";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Clock } from "lucide-react";
+import { Clock, ExternalLink } from "lucide-react";
+import { isRegistrationOpen, registrationFormUrl } from "@/lib/site-config";
 ---
 
 <Layout
   title="Registro | Ethereum Bolivia"
-  description="Estado del registro al Buildathon Cochabamba 2026 y a los talleres del Road to Buildathon. Te avisaremos por nuestras redes cuando abran las inscripciones."
+  description={isRegistrationOpen
+    ? "Inscríbete al Road to Buildathon: talleres y meetups presenciales previos al Buildathon Cochabamba 2026."
+    : "Estado del registro al Buildathon Cochabamba 2026 y a los talleres del Road to Buildathon. Te avisaremos por nuestras redes cuando abran las inscripciones."}
 >
   <div class="relative flex min-h-screen w-full flex-col">
     <div class="layout-container flex h-full grow flex-col">
@@ -16,35 +27,139 @@ import { Clock } from "lucide-react";
       <main class="flex flex-col flex-1">
         <section class="w-full py-24 px-4 bg-background">
           <div class="max-w-xl mx-auto text-center flex flex-col items-center">
-            <div
-              class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-muted border border-border mb-6"
-            >
-              <Clock className="size-7 text-muted-foreground" />
-            </div>
-            <h1 class="text-3xl font-bold text-foreground tracking-tight mb-4">
-              Las inscripciones aún no están abiertas
-            </h1>
-            <p class="text-muted-foreground text-base font-light mb-8 max-w-md">
-              Te avisaremos cuando puedas inscribirte al Buildathon y a los
-              talleres de Road to Buildathon. Mantente atento a nuestras redes.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://t.me/EthereumBo" rel="noopener noreferrer" target="_blank">
-                <Button size="lg" variant="secondary" className="rounded-full">
-                  Mantente en contacto
-                </Button>
-              </a>
-              <a href="/">
-                <Button size="lg" variant="outline" className="rounded-full">
-                  Volver al inicio
-                </Button>
-              </a>
-              <a href="/road-to-buildathon/">
-                <Button size="lg" variant="outline" className="rounded-full">
-                  Road to Buildathon
-                </Button>
-              </a>
-            </div>
+            {
+              isRegistrationOpen ? (
+                <>
+                  <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-muted border border-border mb-6">
+                    <ExternalLink className="size-7 text-muted-foreground" />
+                  </div>
+                  <h1 class="text-3xl font-bold text-foreground tracking-tight mb-4">
+                    Inscríbete al Road to Buildathon
+                  </h1>
+                  <p class="text-muted-foreground text-base font-light mb-8 max-w-md">
+                    Regístrate en los talleres y meetups presenciales previos al
+                    Buildathon Cochabamba 2026. Los cupos son limitados.
+                  </p>
+                  <Card className="w-full gap-0 rounded-2xl border border-border/80 border-t-2 border-t-primary bg-card/90 py-0 text-left shadow-none">
+                    <CardHeader className="px-6 pt-6 pb-4">
+                      <div class="flex items-start gap-3">
+                        <div class="flex flex-col gap-1 pt-0.5">
+                          <CardTitle className="text-base font-semibold">
+                            Formulario de inscripción
+                          </CardTitle>
+                          <CardDescription className="text-xs">
+                            Enlace externo · nueva pestaña
+                          </CardDescription>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="flex flex-col items-stretch gap-3 px-6 pb-5 text-center">
+                      <a
+                        href={registrationFormUrl}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        class="w-full"
+                      >
+                        <Button size="lg" className="w-full rounded-full">
+                          Completar inscripción
+                          <ExternalLink className="size-4" />
+                        </Button>
+                      </a>
+                      <p class="max-w-sm mx-auto text-xs text-muted-foreground opacity-80">
+                        Abrirás nuestro formulario de registro en una nueva
+                        pestaña
+                      </p>
+                    </CardContent>
+                    <CardFooter className="flex justify-center border-t border-border/50 px-6 py-4">
+                      <p class="max-w-sm text-center text-xs text-muted-foreground opacity-60">
+                        La inscripción al evento principal del Buildathon es
+                        aparte.
+                      </p>
+                    </CardFooter>
+                  </Card>
+                  <div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+                    <a
+                      href="https://t.me/EthereumBo"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <Button
+                        size="lg"
+                        variant="secondary"
+                        className="rounded-full"
+                      >
+                        Mantente en contacto
+                      </Button>
+                    </a>
+                    <a href="/road-to-buildathon/">
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        className="rounded-full"
+                      >
+                        Road to Buildathon
+                      </Button>
+                    </a>
+                    <a href="/">
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        className="rounded-full"
+                      >
+                        Volver al inicio
+                      </Button>
+                    </a>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-muted border border-border mb-6">
+                    <Clock className="size-7 text-muted-foreground" />
+                  </div>
+                  <h1 class="text-3xl font-bold text-foreground tracking-tight mb-4">
+                    Las inscripciones aún no están abiertas
+                  </h1>
+                  <p class="text-muted-foreground text-base font-light mb-8 max-w-md">
+                    Te avisaremos cuando puedas inscribirte al Buildathon y a
+                    los talleres de Road to Buildathon. Mantente atento a
+                    nuestras redes.
+                  </p>
+                  <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a
+                      href="https://t.me/EthereumBo"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <Button
+                        size="lg"
+                        variant="secondary"
+                        className="rounded-full"
+                      >
+                        Mantente en contacto
+                      </Button>
+                    </a>
+                    <a href="/">
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        className="rounded-full"
+                      >
+                        Volver al inicio
+                      </Button>
+                    </a>
+                    <a href="/road-to-buildathon/">
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        className="rounded-full"
+                      >
+                        Road to Buildathon
+                      </Button>
+                    </a>
+                  </div>
+                </>
+              )
+            }
           </div>
         </section>
       </main>
