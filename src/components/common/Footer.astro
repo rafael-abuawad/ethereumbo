@@ -1,7 +1,8 @@
 ---
 import { Send, Instagram, Facebook, Linkedin, Twitter } from "lucide-react";
 import { ModeToggle } from "./ModeToggle";
-import { Button } from "../ui/button";
+import { buttonVariants } from "../ui/button";
+import { cn } from "@/lib/utils";
 
 const socialLinks = [
   { href: "https://t.me/EthereumBo", icon: Send, label: "Telegram" },
@@ -59,15 +60,17 @@ const socialLinks = [
     <div class="flex flex-wrap justify-center gap-3 sm:gap-4">
       {
         socialLinks.map(({ href, icon: Icon, label }) => (
-          <a href={href} target="_blank" rel="noopener noreferrer">
-            <Button
-              variant="ghost"
-              size="icon"
-              aria-label={label}
-              className="text-muted-foreground rounded-full size-11 border border-transparent hover:border-primary/25 hover:bg-primary/10 hover:text-primary transition-all duration-200"
-            >
-              <Icon className="size-5" />
-            </Button>
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={label}
+            class={cn(
+              buttonVariants({ variant: "ghost", size: "icon" }),
+              "text-muted-foreground rounded-full size-11 border border-transparent hover:border-primary/25 hover:bg-primary/10 hover:text-primary transition-all duration-200",
+            )}
+          >
+            <Icon className="size-5" />
           </a>
         ))
       }

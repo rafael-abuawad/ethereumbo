@@ -1,5 +1,5 @@
 ---
-import { Button } from "@/components/ui/button";
+import ButtonLink from "@/components/ui/ButtonLink.astro";
 import { WavyBackground } from "@/components/ui/wavy-background";
 ---
 
@@ -44,11 +44,14 @@ import { WavyBackground } from "@/components/ui/wavy-background";
       <div
         class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up animate-fade-up-delay-5"
       >
-        <a href="/road-to-buildathon/" class="hover:cursor-pointer">
-          <Button size="lg" variant="secondary" className="rounded-full">
-            Road to Buildathon
-          </Button>
-        </a>
+        <ButtonLink
+          href="/road-to-buildathon/"
+          size="lg"
+          variant="secondary"
+          className="rounded-full"
+        >
+          Road to Buildathon
+        </ButtonLink>
       </div>
     </div>
   </div>

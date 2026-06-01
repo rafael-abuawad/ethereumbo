@@ -1,6 +1,6 @@
 ---
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import ButtonLink from "@/components/ui/ButtonLink.astro";
 import { cityConfig } from "@/lib/road-to-buildathon/events";
 
 type CitySlug = "cochabamba" | "santa-cruz" | "la-paz";
@@ -45,13 +45,14 @@ const cities = [
       cities.map((city) => {
         const isActive = city.slug === activeCity;
         return (
-          <Button
+          <ButtonLink
+            href={city.path}
             variant={isActive ? "default" : "outline"}
             size="lg"
             className="rounded-full"
           >
-            <a href={city.path}>{city.name}</a>
-          </Button>
+            {city.name}
+          </ButtonLink>
         );
       })
     }

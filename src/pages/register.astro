@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import ButtonLink from "@/components/ui/ButtonLink.astro";
 import { Clock, ExternalLink } from "lucide-react";
 import { isRegistrationOpen, registrationFormUrl } from "@/lib/site-config";
 ---
@@ -54,17 +54,16 @@ import { isRegistrationOpen, registrationFormUrl } from "@/lib/site-config";
                       </div>
                     </CardHeader>
                     <CardContent className="flex flex-col items-stretch gap-3 px-6 pb-5 text-center">
-                      <a
+                      <ButtonLink
                         href={registrationFormUrl}
                         rel="noopener noreferrer"
                         target="_blank"
-                        class="w-full"
+                        size="lg"
+                        className="w-full rounded-full"
                       >
-                        <Button size="lg" className="w-full rounded-full">
-                          Completar inscripción
-                          <ExternalLink className="size-4" />
-                        </Button>
-                      </a>
+                        Completar inscripción
+                        <ExternalLink className="size-4" />
+                      </ButtonLink>
                       <p class="max-w-sm mx-auto text-xs text-muted-foreground opacity-80">
                         Abrirás nuestro formulario de registro en una nueva
                         pestaña
@@ -78,37 +77,32 @@ import { isRegistrationOpen, registrationFormUrl } from "@/lib/site-config";
                     </CardFooter>
                   </Card>
                   <div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-                    <a
+                    <ButtonLink
                       href="https://t.me/EthereumBo"
                       rel="noopener noreferrer"
                       target="_blank"
+                      size="lg"
+                      variant="secondary"
+                      className="rounded-full"
                     >
-                      <Button
-                        size="lg"
-                        variant="secondary"
-                        className="rounded-full"
-                      >
-                        Mantente en contacto
-                      </Button>
-                    </a>
-                    <a href="/road-to-buildathon/">
-                      <Button
-                        size="lg"
-                        variant="outline"
-                        className="rounded-full"
-                      >
-                        Road to Buildathon
-                      </Button>
-                    </a>
-                    <a href="/">
-                      <Button
-                        size="lg"
-                        variant="outline"
-                        className="rounded-full"
-                      >
-                        Volver al inicio
-                      </Button>
-                    </a>
+                      Mantente en contacto
+                    </ButtonLink>
+                    <ButtonLink
+                      href="/road-to-buildathon/"
+                      size="lg"
+                      variant="outline"
+                      className="rounded-full"
+                    >
+                      Road to Buildathon
+                    </ButtonLink>
+                    <ButtonLink
+                      href="/"
+                      size="lg"
+                      variant="outline"
+                      className="rounded-full"
+                    >
+                      Volver al inicio
+                    </ButtonLink>
                   </div>
                 </>
               ) : (
@@ -125,37 +119,32 @@ import { isRegistrationOpen, registrationFormUrl } from "@/lib/site-config";
                     nuestras redes.
                   </p>
                   <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a
+                    <ButtonLink
                       href="https://t.me/EthereumBo"
                       rel="noopener noreferrer"
                       target="_blank"
+                      size="lg"
+                      variant="secondary"
+                      className="rounded-full"
                     >
-                      <Button
-                        size="lg"
-                        variant="secondary"
-                        className="rounded-full"
-                      >
-                        Mantente en contacto
-                      </Button>
-                    </a>
-                    <a href="/">
-                      <Button
-                        size="lg"
-                        variant="outline"
-                        className="rounded-full"
-                      >
-                        Volver al inicio
-                      </Button>
-                    </a>
-                    <a href="/road-to-buildathon/">
-                      <Button
-                        size="lg"
-                        variant="outline"
-                        className="rounded-full"
-                      >
-                        Road to Buildathon
-                      </Button>
-                    </a>
+                      Mantente en contacto
+                    </ButtonLink>
+                    <ButtonLink
+                      href="/"
+                      size="lg"
+                      variant="outline"
+                      className="rounded-full"
+                    >
+                      Volver al inicio
+                    </ButtonLink>
+                    <ButtonLink
+                      href="/road-to-buildathon/"
+                      size="lg"
+                      variant="outline"
+                      className="rounded-full"
+                    >
+                      Road to Buildathon
+                    </ButtonLink>
                   </div>
                 </>
               )

@@ -2,6 +2,7 @@
 import { Monitor, Star, Zap, ArrowRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import ButtonLink from "@/components/ui/ButtonLink.astro";
 
 const inscripciones = [
   {
@@ -72,11 +73,20 @@ const placeholderImages: Record<string, string> = {
         inscripciones.map((item) => {
           const Icon = item.icon;
           const imageSrc = placeholderImages[item.id] ?? item.image;
-          const button = (
+          const actionButton = item.enabled ? (
+            <ButtonLink
+              href={item.href}
+              variant="outline"
+              className="rounded-full border-primary/20 hover:border-primary/40 hover:bg-primary/5"
+            >
+              {item.buttonLabel}
+              <ArrowRight className="size-4" />
+            </ButtonLink>
+          ) : (
             <Button
               variant="outline"
               className="rounded-full border-primary/20 hover:border-primary/40 hover:bg-primary/5"
-              disabled={!item.enabled}
+              disabled
             >
               {item.buttonLabel}
               <ArrowRight className="size-4" />
@@ -105,9 +115,7 @@ const placeholderImages: Record<string, string> = {
                   class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
               </div>
-              <div class="p-6 pt-4">
-                {item.enabled ? <a href={item.href}>{button}</a> : button}
-              </div>
+              <div class="p-6 pt-4">{actionButton}</div>
             </Card>
           );
         })
