@@ -40,7 +40,7 @@ export const eventsByCity: Record<CitySlug, TimelineEvent[]> = {
       date: "28 Feb",
       dateShort: "28 Feb",
       time: "18:00 - 20:00 BOT",
-      title: "Desarrollo blockchain a fondo",
+      title: "Desarrollo Blockchain a Fondo",
       description:
         "¿Te interesa aprender cómo pasar de la lógica tradicional a los Smart Contracts? Este taller práctico está diseñado para que entiendas: fundamentos de Ethereum y Web3, uso de la suite de desarrollo Foundry, y casos reales de aplicación en blockchain. Ideal para desarrolladores, estudiantes de tecnología y emprendedores interesados en Web3. Los cupos son limitados.",
       type: ["in-person"],
@@ -53,7 +53,7 @@ export const eventsByCity: Record<CitySlug, TimelineEvent[]> = {
       date: "12 Marzo",
       dateShort: "12 Marzo",
       time: "19:00 - 21:00 BOT",
-      title: "Crea tu primer smart contract",
+      title: "Crea tu primer Smart Contract",
       description:
         "¿Quieres dar tus primeros pasos en Web3? En este taller introductorio aprenderás a crear tu primer smart contract desde cero: conceptos básicos de Ethereum, herramientas de desarrollo y un proyecto práctico que podrás desplegar. Ideal para quienes recién comienzan en blockchain y quieren experimentar con código real.",
       type: ["in-person"],
@@ -69,7 +69,7 @@ export const eventsByCity: Record<CitySlug, TimelineEvent[]> = {
       title: "Aleph Hackathon Chapter Cochabamba",
       description:
         "Cochabamba se une a la red de ciudades satélite del Aleph Hackathon, el evento insignia de Crecimiento. Durante este fin de semana, nos reuniremos para construir soluciones innovadoras sobre Web3, IA y tecnologías emergentes que aborden desafíos reales en Argentina, Bolivia y todo Latinoamérica.",
-      type: ["in-person"],
+      type: ["in-person", "online"],
       location: "Departamento de Informática y Sistemas",
       lumaUrl: "https://luma.com/3ebgfywj",
       mapsUrl:
@@ -91,7 +91,7 @@ export const eventsByCity: Record<CitySlug, TimelineEvent[]> = {
       date: "16 Abril",
       dateShort: "16 Abril",
       time: "18:00 BOT",
-      title: "Bienvenida de voluntarios",
+      title: "Bienvenida de Voluntarios",
       description:
         "Encuentro de bienvenida para quienes se suman como voluntarios al Road to Buildathon. Conocerás al equipo, los roles disponibles y cómo contribuir a construir la comunidad Web3 en Cochabamba.",
       type: ["in-person"],
@@ -121,7 +121,7 @@ export const eventsByCity: Record<CitySlug, TimelineEvent[]> = {
       title: "Aleph Hackathon Chapter Cochabamba",
       description:
         "La Paz se une a la red de ciudades satélite del Aleph Hackathon, el evento insignia de Crecimiento. Durante este fin de semana, nos reuniremos en la UMSA para construir soluciones innovadoras sobre Web3, IA y tecnologías emergentes que aborden desafíos reales en Argentina, Bolivia y todo Latinoamérica.",
-      type: ["in-person"],
+      type: ["in-person", "online"],
       location: "Computer Career - UMSA",
       mapsUrl: "https://maps.app.goo.gl/R5Remg6Eau1LqfAq8",
     },
