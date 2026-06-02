@@ -1,3 +1,5 @@
+import { registrationFormUrl } from "@/lib/site-config";
+
 export type EventType = "online" | "stream" | "in-person" | "main";
 
 export interface TimelineEvent {
@@ -10,6 +12,8 @@ export interface TimelineEvent {
   location: string;
   /** Optional Luma registration URL for this event */
   lumaUrl?: string;
+  /** Optional registration form URL for this event */
+  formUrl?: string;
   /** Optional Google Maps URL for venue */
   mapsUrl?: string;
 }
@@ -33,6 +37,19 @@ export const cityConfig = {
     path: "/road-to-buildathon/la-paz",
   },
 } as const;
+
+const roadToBuildathonKickoff: TimelineEvent = {
+  date: "05 Jun",
+  dateShort: "05 Jun",
+  time: "Por confirmar BOT",
+  title: "Sesión Informativa Road to Buildathon 2026",
+  description:
+    "Comienza el Road to Buildathon 2026: un programa que llevará a equipos de toda Bolivia desde una idea hasta un MVP funcional. En esta primera sesión virtual explicaremos la ruta de 12 semanas de formación, mentorías, workshops, networking y construcción que culminará en el Buildathon ETH Bolivia 2026. Abierto para desarrolladores, diseñadores, emprendedores, estudiantes y cualquier persona interesada en construir el futuro de Internet.",
+  type: ["online"],
+  location: "Online",
+  lumaUrl: "https://luma.com/2nmx1j8n",
+  formUrl: registrationFormUrl,
+};
 
 export const eventsByCity: Record<CitySlug, TimelineEvent[]> = {
   cochabamba: [
@@ -111,8 +128,9 @@ export const eventsByCity: Record<CitySlug, TimelineEvent[]> = {
       mapsUrl:
         "https://www.google.com/maps/place/Sociedad+de+Ingenieros+de+Bolivia+Departamental+Cochabamba/data=!4m2!3m1!19sChIJ4YKWMmt045MR27-QpxaI79Q",
     },
+    roadToBuildathonKickoff,
   ],
-  "santa-cruz": [],
+  "santa-cruz": [roadToBuildathonKickoff],
   "la-paz": [
     {
       date: "20 Marzo",
@@ -125,5 +143,6 @@ export const eventsByCity: Record<CitySlug, TimelineEvent[]> = {
       location: "Computer Career - UMSA",
       mapsUrl: "https://maps.app.goo.gl/R5Remg6Eau1LqfAq8",
     },
+    roadToBuildathonKickoff,
   ],
 };

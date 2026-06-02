@@ -1,6 +1,6 @@
 ---
 import { Badge, badgeVariants } from "@/components/ui/badge";
-import { Star, CalendarX2, MapPin } from "lucide-react";
+import { CalendarX2, ExternalLink, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { TimelineEvent } from "@/lib/road-to-buildathon/events";
 
@@ -113,6 +113,21 @@ const { events, cityName } = Astro.props;
                           height="16"
                         />
                         <span class="font-mono text-black">Luma</span>
+                      </a>
+                    ) : null}
+                    {event.formUrl ? (
+                      <a
+                        href={event.formUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Abrir formulario de inscripción"
+                        class={cn(
+                          badgeVariants({ variant: "outline" }),
+                          "inline-flex items-center gap-1 shrink-0",
+                        )}
+                      >
+                        <ExternalLink className="size-2.5" />
+                        Formulario
                       </a>
                     ) : null}
                     {event.mapsUrl ? (
