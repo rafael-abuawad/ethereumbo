@@ -1,0 +1,29 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/common/Header.astro";
+import Footer from "@/components/common/Footer.astro";
+import RecursosHero from "@/components/recursos/Hero.astro";
+import LearningPath from "@/components/recursos/LearningPath.astro";
+import ResourceList from "@/components/recursos/ResourceList.astro";
+import Tips from "@/components/recursos/Tips.astro";
+import RecursosCta from "@/components/recursos/Cta.astro";
+---
+
+<Layout
+  title="Recursos | Ethereum Bolivia"
+  description="Guías y documentación en español para dar tus primeros pasos en Solidity y Vyper. Recursos recomendados para builders de Ethereum Bolivia."
+>
+  <div class="relative flex min-h-screen w-full flex-col">
+    <div class="layout-container flex h-full grow flex-col">
+      <Header />
+      <main class="flex flex-col flex-1">
+        <RecursosHero />
+        <LearningPath />
+        <ResourceList />
+        <Tips />
+        <RecursosCta />
+      </main>
+      <Footer />
+    </div>
+  </div>
+</Layout>

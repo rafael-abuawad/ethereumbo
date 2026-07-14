@@ -1,0 +1,44 @@
+---
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import { learningSteps } from "@/lib/recursos";
+---
+
+<section class="w-full py-24 md:py-28 bg-muted/80 border-b border-border/80">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-12 w-full">
+    <div class="flex flex-col gap-4 mb-12 max-w-2xl">
+      <Badge
+        variant="outline"
+        className="w-fit border-primary/30 bg-primary/5 text-primary font-semibold tracking-wide uppercase text-[0.65rem] py-1"
+        >Ruta sugerida</Badge
+      >
+      <h2
+        class="font-display text-foreground text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight"
+      >
+        Cómo usar estos recursos
+      </h2>
+      <p class="text-muted-foreground text-base md:text-lg font-light leading-relaxed">
+        No necesitas seguir todo el catálogo de una vez. Esta ruta te ayuda a
+        ordenar el aprendizaje si estás empezando desde cero.
+      </p>
+    </div>
+
+    <div class="grid gap-5 md:grid-cols-3">
+      {
+        learningSteps.map((item) => (
+          <Card className="flex flex-col gap-4 p-6 rounded-2xl bg-card/80 border border-border/80 shadow-none">
+            <span class="font-mono text-xs uppercase tracking-[0.2em] text-primary">
+              Paso {item.step}
+            </span>
+            <h3 class="text-foreground font-semibold text-lg leading-snug">
+              {item.title}
+            </h3>
+            <p class="text-muted-foreground text-sm font-light leading-relaxed">
+              {item.description}
+            </p>
+          </Card>
+        ))
+      }
+    </div>
+  </div>
+</section>

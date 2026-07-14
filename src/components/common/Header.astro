@@ -40,6 +40,12 @@ import { MenuIcon, XIcon } from "lucide-react";
           Inicio
         </a>
         <a
+          href="/recursos"
+          class="nav-link-accent text-muted-foreground hover:text-foreground text-sm font-semibold"
+        >
+          Recursos
+        </a>
+        <a
           href="/road-to-buildathon/"
           class="nav-link-accent text-muted-foreground hover:text-foreground text-sm font-semibold"
         >
@@ -81,6 +87,12 @@ import { MenuIcon, XIcon } from "lucide-react";
         @click="open = false"
         class="text-muted-foreground hover:text-foreground text-base font-semibold transition-colors py-2"
         >Inicio</a
+      >
+      <a
+        href="/recursos"
+        @click="open = false"
+        class="text-muted-foreground hover:text-foreground text-base font-semibold transition-colors py-2"
+        >Recursos</a
       >
       <a
         href="/road-to-buildathon/"

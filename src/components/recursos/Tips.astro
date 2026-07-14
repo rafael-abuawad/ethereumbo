@@ -1,0 +1,56 @@
+---
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import { Lightbulb, PencilLine, Users, ShieldCheck } from "lucide-react";
+import { beginnerTips } from "@/lib/recursos";
+
+const tipIcons = [Lightbulb, PencilLine, Users, ShieldCheck];
+---
+
+<section class="w-full py-24 md:py-28 bg-background">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-12 w-full">
+    <div
+      class="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start"
+    >
+      <div class="flex flex-col gap-4">
+        <Badge
+          variant="outline"
+          className="w-fit border-primary/30 bg-primary/5 text-primary font-semibold tracking-wide uppercase text-[0.65rem] py-1"
+          >Para principiantes</Badge
+        >
+        <h2
+          class="font-display text-foreground text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight"
+        >
+          Consejos antes de empezar
+        </h2>
+        <p
+          class="text-muted-foreground text-base md:text-lg font-light leading-relaxed max-w-md"
+        >
+          El desarrollo blockchain se aprende mejor con constancia. Estos
+          consejos te ayudan a no abrumarte en las primeras semanas.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-5">
+        {
+          beginnerTips.map((tip, index) => {
+            const Icon = tipIcons[index] ?? Lightbulb;
+            return (
+              <Card className="flex flex-col gap-3 p-5 rounded-2xl bg-card/80 border border-border/80 shadow-none">
+                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary ring-1 ring-border">
+                  <Icon className="size-5" />
+                </div>
+                <h3 class="text-foreground font-semibold text-sm">
+                  {tip.title}
+                </h3>
+                <p class="text-muted-foreground text-xs leading-relaxed font-light">
+                  {tip.description}
+                </p>
+              </Card>
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+</section>

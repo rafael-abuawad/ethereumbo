@@ -1,0 +1,128 @@
+---
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import ButtonLink from "@/components/ui/ButtonLink.astro";
+import {
+  BookOpen,
+  GraduationCap,
+  FileCode2,
+  Layers,
+  Code2,
+  Blocks,
+  ExternalLink,
+} from "lucide-react";
+import { resourceCategories, type ResourceIcon } from "@/lib/recursos";
+
+const iconMap: Record<
+  ResourceIcon,
+  typeof BookOpen
+> = {
+  book: BookOpen,
+  graduation: GraduationCap,
+  "file-code": FileCode2,
+  layers: Layers,
+  code: Code2,
+  blocks: Blocks,
+};
+---
+
+{
+  resourceCategories.map((category, index) => {
+    const isMuted = index % 2 === 1;
+    const CategoryIcon = iconMap[category.icon];
+    const isSparse = category.resources.length === 1;
+
+    return (
+      <section
+        class:list={[
+          "w-full py-24 md:py-28",
+          isMuted
+            ? "bg-muted/80 border-y border-border/80"
+            : "bg-background",
+        ]}
+      >
+        <div class="max-w-[1280px] mx-auto px-6 lg:px-12 w-full">
+          <div class="flex flex-col gap-4 mb-10 max-w-2xl">
+            <div class="flex items-center gap-3">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary ring-1 ring-border">
+                <CategoryIcon className="size-5" />
+              </div>
+              <h2 class="font-display text-foreground text-3xl md:text-4xl font-semibold tracking-tight">
+                {category.title}
+              </h2>
+            </div>
+            <p class="text-muted-foreground text-base font-light leading-relaxed">
+              {category.description}
+            </p>
+          </div>
+
+          <div
+            class:list={[
+              "grid gap-5",
+              isSparse ? "lg:grid-cols-[1.2fr_0.8fr]" : "sm:grid-cols-2",
+            ]}
+          >
+            {category.resources.map((resource) => {
+              const ResourceIconComp = iconMap[resource.icon];
+              return (
+                <Card className="flex flex-col gap-5 p-6 md:p-7 rounded-2xl bg-card/80 border border-border/80 border-t-2 border-t-primary shadow-none">
+                  <div class="flex items-start justify-between gap-3">
+                    <div class="flex items-start gap-3">
+                      <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground ring-1 ring-border">
+                        <ResourceIconComp className="size-5" />
+                      </div>
+                      <div class="flex flex-col gap-1 pt-0.5">
+                        <h3 class="text-foreground font-semibold text-base leading-snug">
+                          {resource.title}
+                        </h3>
+                        <Badge
+                          variant="outline"
+                          className="w-fit text-[0.65rem] font-mono uppercase tracking-wider border-primary/30 bg-primary/5 text-primary"
+                        >
+                          {resource.level}
+                        </Badge>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-muted-foreground text-sm font-light leading-relaxed flex-1">
+                    {resource.description}
+                  </p>
+                  <ButtonLink
+                    href={resource.href}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    variant="outline"
+                    size="lg"
+                    className="rounded-full w-full sm:w-auto"
+                  >
+                    Abrir recurso
+                    <ExternalLink className="size-4" />
+                  </ButtonLink>
+                </Card>
+              );
+            })}
+
+            {isSparse && category.sidePanel && (
+              <div class="relative min-h-[240px] rounded-2xl overflow-hidden ring-1 ring-border/60 bg-muted">
+                <img
+                  src={category.sidePanel.image}
+                  alt={category.sidePanel.imageAlt}
+                  class="absolute inset-0 h-full w-full object-cover opacity-90"
+                />
+                <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-black/10" />
+                <div class="absolute inset-0 flex flex-col justify-end p-6 gap-2">
+                  <p class="font-mono text-xs uppercase tracking-[0.2em] text-white/70">
+                    Tip
+                  </p>
+                  <p class="text-white text-sm leading-relaxed max-w-sm">
+                    {category.sidePanel.tip}
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+    );
+  })
+}

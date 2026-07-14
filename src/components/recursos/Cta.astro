@@ -1,0 +1,36 @@
+---
+import ButtonLink from "@/components/ui/ButtonLink.astro";
+---
+
+<section class="w-full py-20 md:py-24 px-4 bg-muted border-t border-border">
+  <div class="max-w-xl mx-auto text-center flex flex-col items-center">
+    <img
+      src="/images/15_isotipo_magenta.png"
+      alt=""
+      class="h-12 w-auto mb-6 dark:hidden"
+    />
+    <img
+      src="/images/16_isotipo_blanco.png"
+      alt=""
+      class="h-12 w-auto mb-6 hidden dark:block"
+    />
+    <h2 class="text-2xl md:text-3xl font-semibold text-foreground mb-4">
+      ¿Listo para practicar en comunidad?
+    </h2>
+    <p class="text-muted-foreground text-sm md:text-base mb-8 font-light leading-relaxed">
+      Acompaña lo que aprendes con las charlas y talleres de Road To Buildathon.
+      Es la mejor forma de pasar de los tutoriales a un proyecto real.
+    </p>
+    <ButtonLink
+      href="/register"
+      size="lg"
+      variant="outline"
+      className="rounded-full w-full sm:w-auto px-8"
+    >
+      Regístrate en Road To Buildathon
+    </ButtonLink>
+    <p class="mt-4 text-xs text-muted-foreground opacity-60">
+      *La inscripción al evento principal del Buildathon es aparte.
+    </p>
+  </div>
+</section>
