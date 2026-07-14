@@ -1,53 +1,7 @@
 ---
-import { Monitor, Star, Zap, ArrowRight } from "lucide-react";
+import { ArrowRight, Rocket } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import ButtonLink from "@/components/ui/ButtonLink.astro";
-
-const inscripciones = [
-  {
-    id: "hackers",
-    icon: Monitor,
-    title: "Convocatoria para Hackers",
-    status: "Por anunciar. Más de 200 hackers!",
-    image: "/images/inscripciones/hackers.jpg",
-    imageAlt: "Hackers trabajando en el Buildathon",
-    href: "#",
-    enabled: false,
-    buttonLabel: "Proximamente",
-  },
-  {
-    id: "conferencias",
-    icon: Star,
-    title: "Registro SOLO para conferencias",
-    status: "Disponible hasta agota stock.",
-    image: "/images/inscripciones/conferencias.jpg",
-    imageAlt: "Auditorio durante las conferencias",
-    href: "/register",
-    enabled: true,
-    buttonLabel: "Registrarse",
-  },
-  {
-    id: "merch",
-    icon: Zap,
-    title: "Compra Merch exclusiva del evento",
-    status: "Visita nuestra tienda de Merch.",
-    image: "/images/inscripciones/merch.jpg",
-    imageAlt: "Merchandise exclusiva del evento",
-    href: "#",
-    enabled: false,
-    buttonLabel: "Proximamente",
-  },
-];
-
-const placeholderImages: Record<string, string> = {
-  hackers:
-    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=450&fit=crop",
-  conferencias:
-    "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&h=450&fit=crop",
-  merch:
-    "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&h=450&fit=crop",
-};
 ---
 
 <section
@@ -55,7 +9,7 @@ const placeholderImages: Record<string, string> = {
   id="inscripciones"
 >
   <div class="max-w-[1280px] mx-auto px-6 lg:px-12 w-full relative">
-    <div class="flex flex-col gap-4 mb-14 max-w-3xl">
+    <div class="flex flex-col gap-4 mb-10 max-w-3xl">
       <h2
         class="font-display text-foreground text-4xl md:text-5xl lg:text-[3.25rem] font-semibold leading-tight tracking-tight text-left"
       >
@@ -64,62 +18,34 @@ const placeholderImages: Record<string, string> = {
       <p
         class="text-muted-foreground text-base md:text-lg leading-relaxed max-w-2xl"
       >
-        Elegí tu experiencia: competir, aprender en conferencias o llevarte
-        merch oficial. Pronto habilitamos los enlaces.
+        Inscríbete al programa que te ayudará a convertir tu idea en un producto
+        listo para el mundo real.
       </p>
     </div>
-    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
-      {
-        inscripciones.map((item) => {
-          const Icon = item.icon;
-          const imageSrc = placeholderImages[item.id] ?? item.image;
-          const actionButton = item.enabled ? (
-            <ButtonLink
-              href={item.href}
-              variant="outline"
-              className="rounded-full border-primary/20 hover:border-primary/40 hover:bg-primary/5"
-            >
-              {item.buttonLabel}
-              <ArrowRight className="size-4" />
-            </ButtonLink>
-          ) : (
-            <Button
-              variant="outline"
-              className="rounded-full border-primary/20 hover:border-primary/40 hover:bg-primary/5"
-              disabled
-            >
-              {item.buttonLabel}
-              <ArrowRight className="size-4" />
-            </Button>
-          );
-
-          return (
-            <Card className="group flex flex-col gap-0 p-0 rounded-2xl bg-card/90 border border-border/80 border-t-2 border-t-primary overflow-hidden transition-all duration-300 shadow-none hover:-translate-y-1 hover:border-primary/25 hover:shadow-md">
-              <div class="p-6 pb-4 flex flex-col gap-4">
-                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground ring-1 ring-border transition-transform duration-300 group-hover:scale-105">
-                  <Icon className="size-5" />
-                </div>
-                <div class="flex flex-col gap-1 sm:min-h-24 xl:min-h-fit">
-                  <h3 class="text-foreground font-bold text-lg leading-snug">
-                    {item.title}
-                  </h3>
-                  <p class="text-muted-foreground text-sm leading-relaxed">
-                    {item.status}
-                  </p>
-                </div>
-              </div>
-              <div class="aspect-4/3 w-full overflow-hidden bg-muted">
-                <img
-                  src={imageSrc}
-                  alt={item.imageAlt}
-                  class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-              </div>
-              <div class="p-6 pt-4">{actionButton}</div>
-            </Card>
-          );
-        })
-      }
-    </div>
+    <Card
+      className="grid items-center gap-6 rounded-2xl border border-border/80 border-t-2 border-t-primary bg-card/90 p-6 shadow-none md:grid-cols-[auto_1fr_auto] md:p-8"
+    >
+      <div
+        class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground ring-1 ring-border"
+      >
+        <Rocket className="size-6" />
+      </div>
+      <div class="flex flex-col gap-2">
+        <h3 class="text-foreground text-xl font-bold leading-snug">
+          Road To Buildathon
+        </h3>
+        <p class="text-muted-foreground max-w-2xl text-sm leading-relaxed">
+          Una serie de charlas y talleres para llevar tu producto lo más cerca
+          posible de producción.
+        </p>
+      </div>
+      <ButtonLink
+        href="/register"
+        className="w-full rounded-full px-6 md:w-auto"
+      >
+        Inscríbete
+        <ArrowRight className="size-4" />
+      </ButtonLink>
+    </Card>
   </div>
 </section>

@@ -42,9 +42,9 @@ const roadToBuildathonKickoff: TimelineEvent = {
   date: "05 Jun",
   dateShort: "05 Jun",
   time: "Por confirmar BOT",
-  title: "Sesión Informativa Road to Buildathon 2026",
+  title: "Sesión Informativa Road To Buildathon 2026",
   description:
-    "Comienza el Road to Buildathon 2026: un programa que llevará a equipos de toda Bolivia desde una idea hasta un MVP funcional. En esta primera sesión virtual explicaremos la ruta de 12 semanas de formación, mentorías, workshops, networking y construcción que culminará en el Buildathon ETH Bolivia 2026. Abierto para desarrolladores, diseñadores, emprendedores, estudiantes y cualquier persona interesada en construir el futuro de Internet.",
+    "Comienza Road To Buildathon 2026, una serie de charlas y talleres para llevar tu producto lo más cerca posible de producción. En esta primera sesión virtual explicaremos la ruta de 12 semanas de formación, mentorías, networking y construcción que culminará en el Buildathon ETH Bolivia 2026. El programa está abierto a desarrolladores, diseñadores, emprendedores, estudiantes y cualquier persona interesada en construir el futuro de Internet.",
   type: ["online"],
   location: "Online",
   lumaUrl: "https://luma.com/2nmx1j8n",
@@ -59,7 +59,7 @@ export const eventsByCity: Record<CitySlug, TimelineEvent[]> = {
       time: "18:00 - 20:00 BOT",
       title: "Desarrollo Blockchain a Fondo",
       description:
-        "¿Te interesa aprender cómo pasar de la lógica tradicional a los Smart Contracts? Este taller práctico está diseñado para que entiendas: fundamentos de Ethereum y Web3, uso de la suite de desarrollo Foundry, y casos reales de aplicación en blockchain. Ideal para desarrolladores, estudiantes de tecnología y emprendedores interesados en Web3. Los cupos son limitados.",
+        "¿Te interesa aprender cómo pasar de la lógica tradicional a los Smart Contracts? Este taller práctico está diseñado para que entiendas: fundamentos de Ethereum y Web3, uso de la suite de desarrollo Foundry, y casos reales de aplicación en blockchain. Ideal para desarrolladores, estudiantes de tecnología y emprendedores interesados en Web3.",
       type: ["in-person"],
       location: "SCESI - UMSS",
       lumaUrl: "https://luma.com/8c1scg69",
@@ -110,7 +110,7 @@ export const eventsByCity: Record<CitySlug, TimelineEvent[]> = {
       time: "18:00 BOT",
       title: "Bienvenida de Voluntarios",
       description:
-        "Encuentro de bienvenida para quienes se suman como voluntarios al Road to Buildathon. Conocerás al equipo, los roles disponibles y cómo contribuir a construir la comunidad Web3 en Cochabamba.",
+        "Encuentro de bienvenida para quienes se suman como voluntarios a Road To Buildathon. Conocerás al equipo, los roles disponibles y cómo contribuir a construir la comunidad Web3 en Cochabamba.",
       type: ["in-person"],
       location: "HalfTime Sports Bar",
       mapsUrl:
