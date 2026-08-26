@@ -1,4 +1,4 @@
-import { registrationFormUrl } from "@/lib/site-config";
+import { registrationLinks } from "@/lib/site-config";
 
 export type EventType = "online" | "stream" | "in-person" | "main";
 
@@ -48,7 +48,7 @@ const roadToBuildathonKickoff: TimelineEvent = {
   type: ["online"],
   location: "Online",
   lumaUrl: "https://luma.com/2nmx1j8n",
-  formUrl: registrationFormUrl,
+  formUrl: registrationLinks.participant,
 };
 
 export const eventsByCity: Record<CitySlug, TimelineEvent[]> = {

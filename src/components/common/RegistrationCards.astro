@@ -1,0 +1,71 @@
+---
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import ButtonLink from "@/components/ui/ButtonLink.astro";
+import { cn } from "@/lib/utils";
+import { registrationTracks } from "@/lib/site-config";
+import { Code2, ExternalLink, HeartHandshake, Mic } from "lucide-react";
+
+const trackIcons = {
+  participant: Code2,
+  speaker: Mic,
+  volunteer: HeartHandshake,
+} as const;
+---
+
+<div
+  class="mx-auto grid w-full max-w-xl grid-cols-1 gap-6 lg:max-w-none lg:grid-cols-3 lg:gap-8"
+>
+  {
+    registrationTracks.map((track) => {
+      const Icon = trackIcons[track.id];
+      const isPrimary = track.id === "participant";
+
+      return (
+        <Card
+          className={cn(
+            "flex h-full min-w-0 flex-col gap-0 rounded-2xl border border-border/80 bg-card/90 py-0 text-left shadow-none",
+            isPrimary && "border-t-2 border-t-primary",
+          )}
+        >
+          <CardHeader className="px-6 pt-6 pb-4">
+            <div class="flex items-start gap-3">
+              <div class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground ring-1 ring-border">
+                <Icon className="size-5" />
+              </div>
+              <div class="flex min-w-0 flex-col gap-1 pt-0.5">
+                <CardTitle className="text-base font-semibold text-balance">
+                  {track.title}
+                </CardTitle>
+                <CardDescription className="text-xs">
+                  Enlace externo · nueva pestaña
+                </CardDescription>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent className="flex flex-1 flex-col gap-4 px-6 pb-6">
+            <p class="text-sm leading-relaxed text-muted-foreground">
+              {track.description}
+            </p>
+            <ButtonLink
+              href={track.href}
+              rel="noopener noreferrer"
+              target="_blank"
+              size="lg"
+              variant={isPrimary ? "default" : "outline"}
+              className="mt-auto w-full rounded-full px-5"
+            >
+              {track.cta}
+              <ExternalLink className="size-4" />
+            </ButtonLink>
+          </CardContent>
+        </Card>
+      );
+    })
+  }
+</div>

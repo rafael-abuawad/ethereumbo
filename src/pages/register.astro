@@ -2,31 +2,29 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/common/Header.astro";
 import Footer from "@/components/common/Footer.astro";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import RegistrationCards from "@/components/common/RegistrationCards.astro";
 import ButtonLink from "@/components/ui/ButtonLink.astro";
 import { Clock, ExternalLink } from "lucide-react";
-import { isRegistrationOpen, registrationFormUrl } from "@/lib/site-config";
+import { isRegistrationOpen } from "@/lib/site-config";
 ---
 
 <Layout
   title="Registro | Ethereum Bolivia"
   description={isRegistrationOpen
-    ? "Inscríbete a Road To Buildathon, una serie de charlas y talleres para llevar tu producto lo más cerca posible de producción."
-    : "Consulta el estado de las inscripciones a Road To Buildathon, la serie de charlas y talleres de Ethereum Bolivia."}
+    ? "Elige cómo participar: inscríbete como hacker, speaker o voluntario en Ethereum Bolivia."
+    : "Consulta el estado de las inscripciones de Ethereum Bolivia."}
 >
   <div class="relative flex min-h-screen w-full flex-col">
     <div class="layout-container flex h-full grow flex-col">
       <Header />
       <main class="flex flex-col flex-1">
         <section class="w-full py-24 px-4 bg-background">
-          <div class="max-w-xl mx-auto text-center flex flex-col items-center">
+          <div
+            class:list={[
+              "mx-auto flex flex-col items-center text-center",
+              isRegistrationOpen ? "max-w-6xl" : "max-w-xl",
+            ]}
+          >
             {
               isRegistrationOpen ? (
                 <>
@@ -34,49 +32,14 @@ import { isRegistrationOpen, registrationFormUrl } from "@/lib/site-config";
                     <ExternalLink className="size-7 text-muted-foreground" />
                   </div>
                   <h1 class="text-3xl font-bold text-foreground tracking-tight mb-4">
-                    Inscríbete a Road To Buildathon
+                    Elige cómo participar
                   </h1>
-                  <p class="text-muted-foreground text-base font-light mb-8 max-w-md">
-                    Participa en una serie de charlas y talleres que te ayudarán
-                    a llevar tu producto lo más cerca posible de producción.
+                  <p class="text-muted-foreground text-base font-light mb-10 max-w-md">
+                    Inscríbete como hacker, speaker o voluntario. Cada rol abre
+                    su formulario en una nueva pestaña.
                   </p>
-                  <Card className="w-full gap-0 rounded-2xl border border-border/80 border-t-2 border-t-primary bg-card/90 py-0 text-left shadow-none">
-                    <CardHeader className="px-6 pt-6 pb-4">
-                      <div class="flex items-start gap-3">
-                        <div class="flex flex-col gap-1 pt-0.5">
-                          <CardTitle className="text-base font-semibold">
-                            Formulario de inscripción
-                          </CardTitle>
-                          <CardDescription className="text-xs">
-                            Enlace externo · nueva pestaña
-                          </CardDescription>
-                        </div>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="flex flex-col items-stretch gap-3 px-6 pb-5 text-center">
-                      <ButtonLink
-                        href={registrationFormUrl}
-                        rel="noopener noreferrer"
-                        target="_blank"
-                        size="lg"
-                        className="w-full rounded-full"
-                      >
-                        Completar inscripción
-                        <ExternalLink className="size-4" />
-                      </ButtonLink>
-                      <p class="max-w-sm mx-auto text-xs text-muted-foreground opacity-80">
-                        Abrirás nuestro formulario de registro en una nueva
-                        pestaña
-                      </p>
-                    </CardContent>
-                    <CardFooter className="flex justify-center border-t border-border/50 px-6 py-4">
-                      <p class="max-w-sm text-center text-xs text-muted-foreground opacity-60">
-                        La inscripción al evento principal del Buildathon es
-                        aparte.
-                      </p>
-                    </CardFooter>
-                  </Card>
-                  <div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+                  <RegistrationCards />
+                  <div class="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
                     <ButtonLink
                       href="https://t.me/EthereumBo"
                       rel="noopener noreferrer"
@@ -114,8 +77,8 @@ import { isRegistrationOpen, registrationFormUrl } from "@/lib/site-config";
                     Las inscripciones aún no están abiertas
                   </h1>
                   <p class="text-muted-foreground text-base font-light mb-8 max-w-md">
-                    Te avisaremos cuando puedas inscribirte a Road To
-                    Buildathon. Mantente atento a nuestras redes.
+                    Te avisaremos cuando puedas inscribirte. Mantente atento a
+                    nuestras redes.
                   </p>
                   <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <ButtonLink

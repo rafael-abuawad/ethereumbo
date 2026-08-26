@@ -1,7 +1,5 @@
 ---
-import { ArrowRight, Rocket } from "lucide-react";
-import { Card } from "@/components/ui/card";
-import ButtonLink from "@/components/ui/ButtonLink.astro";
+import RegistrationCards from "@/components/common/RegistrationCards.astro";
 ---
 
 <section
@@ -18,34 +16,10 @@ import ButtonLink from "@/components/ui/ButtonLink.astro";
       <p
         class="text-muted-foreground text-base md:text-lg leading-relaxed max-w-2xl"
       >
-        Inscríbete al programa que te ayudará a convertir tu idea en un producto
-        listo para el mundo real.
+        Elige cómo participar: como hacker, speaker o voluntario. Cada
+        inscripción abre su formulario en una nueva pestaña.
       </p>
     </div>
-    <Card
-      className="grid items-center gap-6 rounded-2xl border border-border/80 border-t-2 border-t-primary bg-card/90 p-6 shadow-none md:grid-cols-[auto_1fr_auto] md:p-8"
-    >
-      <div
-        class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground ring-1 ring-border"
-      >
-        <Rocket className="size-6" />
-      </div>
-      <div class="flex flex-col gap-2">
-        <h3 class="text-foreground text-xl font-bold leading-snug">
-          Road To Buildathon
-        </h3>
-        <p class="text-muted-foreground max-w-2xl text-sm leading-relaxed">
-          Una serie de charlas y talleres para llevar tu producto lo más cerca
-          posible de producción.
-        </p>
-      </div>
-      <ButtonLink
-        href="/register"
-        className="w-full rounded-full px-6 md:w-auto"
-      >
-        Inscríbete
-        <ArrowRight className="size-4" />
-      </ButtonLink>
-    </Card>
+    <RegistrationCards />
   </div>
 </section>
